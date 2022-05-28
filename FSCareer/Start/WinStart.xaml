@@ -1,0 +1,27 @@
+﻿<Window x:Class="FSCareer.Start.WinStart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FSCareer.Start"
+        mc:Ignorable="d"
+        Title="FSCareer" Height="450" Width="800" ResizeMode="NoResize">
+	<Grid>
+		<Grid.DataContext>
+			<local:ViewModel/>
+		</Grid.DataContext>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"/>
+			<RowDefinition Height="100"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Welcome to FSCareer!" FontSize="20"/>
+		<TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" TextWrapping="Wrap">
+			Fed up with all the expensive addons in the flight simulation world (don't get me wrong, I do get why they are so expensive, I just don't have the money), I decided to try making my own career addon!
+			<LineBreak/>
+			The goal is an airline career addon, where you start with a small company, with a small airplane and work your way up to a giant airline!
+			<LineBreak/>
+			Any contributions are very welcome at <Hyperlink Command="{Binding Hyperlink}" CommandParameter="https://github.com/Begus001/FSCareer">https://github.com/Begus001/FSCareer</Hyperlink>
+		</TextBlock>
+	</Grid>
+</Window>
