@@ -3,25 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FSCareer.Start"
-        mc:Ignorable="d"
-        Title="FSCareer" Height="450" Width="800" ResizeMode="NoResize">
-	<Grid>
-		<Grid.DataContext>
-			<local:ViewModel/>
-		</Grid.DataContext>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="50"/>
-			<RowDefinition Height="100"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Welcome to FSCareer!" FontSize="20"/>
-		<TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" TextWrapping="Wrap">
-			Fed up with all the expensive addons in the flight simulation world (don't get me wrong, I do get why they are so expensive, I just don't have the money), I decided to try making my own career addon!
+        xmlns:local="clr-namespace:FSCareer.Start" d:DataContext="{d:DesignInstance Type=local:StartViewModel}"
+		mc:Ignorable="d"
+        Title="FSCareer" Height="480" Width="640" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+	<StackPanel VerticalAlignment="Center">
+		<Label Margin="0 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Welcome to FSCareer!" FontSize="24"/>
+		<TextBlock Margin="10 20 10 20" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" TextWrapping="Wrap">
+			Fed up with all the expensive addons in the flight simulation world (don't get me wrong, I do get why they are so expensive, I just don't have the money!), I decided to try making my own career addon!
 			<LineBreak/>
 			The goal is an airline career addon, where you start with a small company, with a small airplane and work your way up to a giant airline!
 			<LineBreak/>
-			Any contributions are very welcome at <Hyperlink Command="{Binding Hyperlink}" CommandParameter="https://github.com/Begus001/FSCareer">https://github.com/Begus001/FSCareer</Hyperlink>
+			Any contributions are very welcome at <Hyperlink Command="{Binding Hyperlink}" CommandParameter="https://github.com/Begus001/FSCareer">https://github.com/Begus001/FSCareer</Hyperlink>!
 		</TextBlock>
-	</Grid>
+
+		<Button Margin="100 10 100 10" Height="50" Content="Start new career" FontSize="14" Command="{Binding NewCareer}"/>
+		<Button Margin="100 10 100 10" Height="50" Content="Load career from file" FontSize="14" Command="{Binding LoadCareer}"/>
+		<Button Margin="100 10 100 10" Height="50" Content="Exit" FontSize="14" Command="{Binding Exit}"/>
+	</StackPanel>
 </Window>

@@ -1,0 +1,68 @@
+﻿<Window x:Class="FSCareer.Main.WinMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FSCareer.Main" d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+		mc:Ignorable="d"
+        Title="{Binding WindowTitle}" Height="550" Width="800" WindowStartupLocation="CenterScreen">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="100"/>
+		</Grid.RowDefinitions>
+		<TabControl>
+			<TabItem Header="Jobs">
+			</TabItem>
+			<TabItem Header="Aircraft">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition Height="50"/>
+					</Grid.RowDefinitions>
+					<ListView ItemsSource="{Binding OwnedAircraftList}" SelectedItem="{Binding SelectedAircraft}" FontSize="14">
+						<ListView.ItemContainerStyle>
+							<Style TargetType="ListViewItem">
+								<Setter Property="HorizontalContentAlignment" Value="Center"/>
+							</Style>
+						</ListView.ItemContainerStyle>
+						<ListView.View>
+							<GridView>
+								<GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+								<GridViewColumn Header="Class" DisplayMemberBinding="{Binding Class}"/>
+								<GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price, StringFormat=${0:N0} }"/>
+								<GridViewColumn Header="Payload Capacity" DisplayMemberBinding="{Binding PayloadCapacity, StringFormat={}{0} kg }"/>
+								<GridViewColumn Header="Fuel Capacity" DisplayMemberBinding="{Binding FuelCapacity, StringFormat={}{0} kg }"/>
+							</GridView>
+						</ListView.View>
+					</ListView>
+
+					<Grid Grid.Row="1">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+						<Button Grid.Column="1" Margin="10 0 10 5" Width="150" Height="30" VerticalAlignment="Center" Content="Purchase aircraft"/>
+					</Grid>
+					
+				</Grid>
+			</TabItem>
+			<TabItem Header="Management">
+			</TabItem>
+		</TabControl>
+		<GroupBox Grid.Row="1" Margin="5"  Header="Current Flight">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Label Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" Content="Aircraft:"/>
+				<Label Grid.Column="1" Margin="0 0 10 0" VerticalAlignment="Center" Content="{Binding SelectedAircraft.Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+				<Button Grid.Column="3" Width="100" Height="30" VerticalAlignment="Center" Content="Start flight"/>
+			</Grid>
+		</GroupBox>
+	</Grid>
+</Window>

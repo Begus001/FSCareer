@@ -4,21 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows;
 
 namespace FSCareer.Commands
 {
-	public class CmdHyperlink : ICommand
+	public class CmdHyperlink : BaseCommand
 	{
-		public event EventHandler CanExecuteChanged;
-
-		public bool CanExecute(object parameter)
-		{
-			return true;
-		}
-
-		public void Execute(object parameter)
+		public override void Execute(object parameter)
 		{
 			System.Diagnostics.Process.Start(parameter as string);
+		}
+	}
+
+	public class CmdExit : BaseCommand
+	{
+		public override void Execute(object parameter)
+		{
+			if (parameter == null)
+			{ 
+				Application.Current.Shutdown(0);
+				return;
+			}
+			else
+			{ 
+				Application.Current.Shutdown(Convert.ToInt32(parameter));
+				return;
+			}
 		}
 	}
 }

@@ -58,6 +58,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Main\WinMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewCareer\WinNewCareer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Start\WinStart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,8 +74,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\GlobalCommands.cs" />
-    <Compile Include="Start\ViewModel.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Models\Aircraft.cs" />
+    <Compile Include="Models\Career.cs" />
+    <Compile Include="Main\MainViewModel.cs" />
+    <Compile Include="Main\WinMain.xaml.cs">
+      <DependentUpon>WinMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewCareer\NewCareerViewModel.cs" />
+    <Compile Include="NewCareer\WinNewCareer.xaml.cs">
+      <DependentUpon>WinNewCareer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Config\Settings.cs" />
+    <Compile Include="Start\StartViewModel.cs" />
     <Compile Include="Start\WinStart.xaml.cs">
       <DependentUpon>WinStart.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -91,6 +113,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

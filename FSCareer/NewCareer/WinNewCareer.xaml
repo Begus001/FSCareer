@@ -1,0 +1,44 @@
+﻿<Window x:Class="FSCareer.NewCareer.WinNewCareer"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:FSCareer.NewCareer"
+		mc:Ignorable="d"
+		x:Name="WNewCareer" Title="FSCareer" Height="450" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+	<StackPanel>
+		<StackPanel.DataContext>
+			<local:NewCareerViewModel WindowInstance="{x:Reference WNewCareer}"/>
+		</StackPanel.DataContext>
+
+		<Label Margin="0 10 0 10" HorizontalAlignment="Center" VerticalAlignment="Center" Content="New Career" FontSize="24"/>
+
+		<Grid Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Label Grid.Column="0" Margin="10 0 5 0" Height="25" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Airline Name"/>
+			<TextBox Grid.Column="1" Margin="5 0 10 0" Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center" Text="{Binding AirlineName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+		</Grid>
+		<Grid Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Label Grid.Column="0" Margin="10 0 5 0" Height="25" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Home Airport"/>
+			<TextBox Grid.Column="1" Margin="5 0 10 0" Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center" Text="{Binding HomeAirport, Mode=OneWayToSource}"/>
+		</Grid>
+		<GroupBox Margin="10" Header="Difficulty">
+			<StackPanel Margin="5">
+				<RadioButton Margin="140 5 0 5" HorizontalAlignment="Left" GroupName="Difficulty" Content="Extreme" Command="{Binding CmdSelectDifficulty}" CommandParameter="Extreme"/>
+				<RadioButton Margin="140 5 0 5" HorizontalAlignment="Left" GroupName="Difficulty" Content="Hard" Command="{Binding CmdSelectDifficulty}" CommandParameter="hard"/>
+				<RadioButton Margin="140 5 0 5" HorizontalAlignment="Left" GroupName="Difficulty" Content="Medium" Command="{Binding CmdSelectDifficulty}" CommandParameter="medium"/>
+				<RadioButton Margin="140 5 0 5" HorizontalAlignment="Left" GroupName="Difficulty" Content="Easy" Command="{Binding CmdSelectDifficulty}" CommandParameter="easy"/>
+				<RadioButton Margin="140 5 0 5" HorizontalAlignment="Left" GroupName="Difficulty" Content="Very Easy" Command="{Binding CmdSelectDifficulty}" CommandParameter="very easy"/>
+			</StackPanel>
+		</GroupBox>
+		<Button Margin="0 10 0 0" Width="100" Content="Create" Command="{Binding CmdCreate}"/>
+		<TextBlock Margin="20" Text="{Binding Error, Mode=OneWay}" HorizontalAlignment="Center" Foreground="Red"/>
+	</StackPanel>
+</Window>
